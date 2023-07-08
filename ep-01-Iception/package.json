@@ -1,0 +1,19 @@
+{
+  "name": "learning-react",
+  "version": "1.0.0",
+  "description": "This is namaste react by Akshay Saini",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aman1021/React.git"
+  },
+  "author": "Aman Chandel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aman1021/React/issues"
+  },
+  "homepage": "https://github.com/aman1021/React#readme"
+}
