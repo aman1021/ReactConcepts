@@ -1,28 +1,45 @@
-/*
-<div id="parent">
-    <div id="child">
-     <h1></h1>
-     <h2></h2>
-     </div>
-</div>
+import React from "react"
+import  ReactDOM from "react-dom/client";
 
+const Header = () => {
+  return (
+    <div className="header">
+      <div className="logo-container">
+        <img className="logo" src="https://cdn.dribbble.com/users/1635051/screenshots/4291569/socio_curry_logo-01.png"/>
+      </div>
 
-
-
-*/
-
-const parent = React.createElement(
-  "div",
-  { id: "parent" },
-  React.createElement(
-    "div",
-    { id: "child" },
-    [
-      React.createElement("h1", {}, "I am H1 Tag"),
-      React.createElement("h2", {}, "I am H2 Tag"),
-    ] // to create siblings we need to from an array.
+      <div className="nav-items">
+        <ul>
+          {/* {nav items is a list so we are using uoordered list amd list tag} */}
+          <li>Home</li>
+          <li>About Us</li>
+          <li>Contact Us</li>
+          <li>Cart</li>
+        </ul>
+      </div>
+    </div>
   )
-);
+}
+
+
+const AppLayout = () => {
+  return (
+    <div className="app">
+      <Header/>
+    </div>
+  )
+}
+
+// const parent = React.createElement(
+//   "div",{ id: "parent" },
+//   React.createElement(
+//     "div",{ id: "child" },
+//     [
+//       React.createElement("h1", {}, "I am H1 Tag and This is Namaste React🚀"),
+//       React.createElement("h2", {}, "I am H2 Tag"),
+//     ] // to create siblings we need to from an array.
+//   )
+// );
 
 // const heading = React.createElement(
 //   "h1",
@@ -34,4 +51,4 @@ const parent = React.createElement(
 
 const root = ReactDOM.createRoot(document.getElementById("root")); // everything that we will render , will be inside the root
 
-root.render(parent);
+root.render(<AppLayout/>);
