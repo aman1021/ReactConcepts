@@ -21,11 +21,78 @@ const Header = () => {
   )
 }
 
+const resList = [
+  {
+  res:"Aman's Cafe",
+  cuisine: ["Biryani", "North Indian", "Asian"],
+  rating: "4.6",
+  deliveryTime: 30,
+  id: 1
+},
+{
+  res:"Aman's Cafe",
+  cuisine: ["Biryani", "North Indian", "Asian"],
+  rating: "4.6",
+  deliveryTime: 30,
+  id: 2
+},
+{
+  res:"Aman's Cafe",
+  cuisine: ["Biryani", "North Indian", "Asian"],
+  rating: "4.6",
+  deliveryTime: 30,
+  id: 3
+},
+{
+  res:"Aman's Cafe",
+  cuisine: ["Biryani", "North Indian", "Asian"],
+  rating: "4.6",
+  deliveryTime: 30,
+  id: 4
+},
+{
+  res:"Aman's Cafe",
+  cuisine: ["Biryani", "North Indian", "Asian"],
+  rating: "4.6",
+  deliveryTime: 30,
+  id: 5
+}
+]
+
+const RestaurantCard = (props) => {
+  const {resData} = props
+  const {res, cuisine, deliveryTime, rating} = resData;
+  return (
+    <div className="res-card">
+      <img className="resimg" alt="res-coffee" src="https://img.freepik.com/free-photo/fresh-coffee-steams-wooden-table-close-up-generative-ai_188544-8923.jpg"/>
+      <h3>{res}</h3>
+      <h4> {cuisine.join(", ")} </h4>
+      <h4> {deliveryTime} minutes</h4>
+      <h4> {rating} stars</h4>
+    </div>
+  )
+}
+
+// console.log(resList)
+
+const Body = () => {
+  return (
+    <div className="body">
+      <div className="search"> search</div>
+      <div className="res-container">
+        {resList.map((restaurant) => (
+            <RestaurantCard key={restaurant.id} resData = {restaurant}/>
+          ))}
+      </div>
+    </div>
+  )
+}
 
 const AppLayout = () => {
   return (
     <div className="app">
       <Header/>
+      <Body/>
     </div>
   )
 }
