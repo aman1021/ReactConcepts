@@ -45,4 +45,4 @@ export const resList = [
   
 export const RES_LOGO = "https://cdn.dribbble.com/users/1635051/screenshots/4291569/socio_curry_logo-01.png";
 
-export const RES_CARD_IMG = "https://img.freepik.com/free-photo/fresh-coffee-steams-wooden-table-close-up-generative-ai_188544-8923.jpg";
+export const RES_CARD_IMG = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";

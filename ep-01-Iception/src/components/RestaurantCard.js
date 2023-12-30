@@ -2,14 +2,16 @@ import  {RES_CARD_IMG} from "../utils/constants";
 
 const RestaurantCard = (props) => {
     const {resData} = props
-    const {res, cuisine, deliveryTime, rating} = resData;
+    console.log(resData)
+    const { name, avgRating, cuisines, costForTwo, sla, cloudinaryImageId} = resData;
     return (
       <div className="res-card">
-        <img className="resimg" alt="res-coffee" src={RES_CARD_IMG}/>
-        <h3>{res}</h3>
-        <h4> {cuisine.join(", ")} </h4>
-        <h4> {deliveryTime} minutes</h4>
-        <h4> {rating} stars</h4>
+        <img className="resimg" alt="res-coffee" src={RES_CARD_IMG + cloudinaryImageId}/>
+        <h3>{name}</h3>
+        <h4> {cuisines.join(", ")} </h4>
+        <h4> {sla.deliveryTime} minutes</h4>
+        <h4> {avgRating} stars</h4>
+        <h4> {costForTwo} </h4>
       </div>
     )
   }
