@@ -1,10 +1,11 @@
-import React from "react"
+import React, { useEffect } from "react"
 import  {RES_LOGO} from "../utils/constants"
 import { useState } from "react"
 
 const Header = () => {
 
   const [btnName, setBtnName] = useState("LogIn");
+
 
     return (
       <div className="header">

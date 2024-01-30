@@ -7,8 +7,8 @@ const Body = () => {
 // const listRes = arr[0]
 // const setListRes = arr[1]
   const [listRes, setListRes] = useState([]);
-  
   const [filteredRes, setFilteredRes] = useState([])
+
   const [searchText, setSearchText] = useState("")
 
   //when ever a state variable is updated, react triggers a reconciliation cycle(re-renders the component)
@@ -48,10 +48,10 @@ const Body = () => {
 
         <button className="filter-btn" onClick={() => {
           const filteredList  =
-            listRes.filter((res) => 
-            res.info.avgRating> 4
+          listRes.filter((res) => 
+            res?.info?.avgRating > 4
             )
-          setListRes(filteredList)
+            setFilteredRes(filteredList)
         }}>
           Top rated Restaurant
         </button>
