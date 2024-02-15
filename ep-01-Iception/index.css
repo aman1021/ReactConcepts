@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     border: 1px solid black;
+    margin: 0px 0px 10px 0px;
 }
 
 .logo{
@@ -70,4 +71,9 @@
     width: 200px;
     height: 300px;
     background-color: #f0f0f0;
+}
+
+.error_page{
+    text-align: center;
+    color: red;
 }
