@@ -29,7 +29,7 @@ const Header = () => {
               Cart
             </li>
                               {/* toggle functionality of login and logout in button */}
-            <button className="Log-btn" onClick={()=>{ btnName==="LogIn" ? setBtnName("LogOut") : setBtnName("LogIn") }}>{btnName}</button>
+            <button className= {`${btnName ==="LogIn"? "active" : "inactive"}`} onClick={()=>{ btnName==="LogIn" ? setBtnName("LogOut") : setBtnName("LogIn") }}>{btnName}</button>
           </ul>
         </div>
       </div>

@@ -38,7 +38,7 @@ const Body = () => {
             setSearchText(e.target.value);
           }}/>
 
-          <button onClick={()=> {
+          <button className="search-btn" onClick={()=> {
             //filter the res cards and update the ui.
             const filteredRes = listRes.filter((res) => res?.info?.name.toLowerCase().includes(searchText.toLowerCase()));
             setFilteredRes(filteredRes);

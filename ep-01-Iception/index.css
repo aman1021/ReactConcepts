@@ -1,6 +1,7 @@
 .header{
     display: flex;
     justify-content: space-between;
+    width: 100%;
     border: 1px solid black;
     margin: 0px 0px 10px 0px;
 }
@@ -23,10 +24,27 @@
     margin: 10px;
 }
 
-.Log-btn{
+a {
+    text-decoration: none !important;
+    color: #000;
+  }
+  
+
+.active{
     background-color: rgb(68, 249, 68);
     padding: 0 20px;
     height: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.inactive{
+    background-color: rgb(247, 26, 26);
+    padding: 0 20px;
+    height: 50px;
+    font-size: 16px;
+    color: #fff;
     cursor: pointer;
     border-radius: 10px;
 }
@@ -34,13 +52,13 @@
 .res-container{
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .res-card{
     margin: 5px;
     padding: 5px;
-    width: 190px;
-    /* height: 300px; */
+    width: 194.5px;
     background-color: #f0f0f0;
 }
 
@@ -51,12 +69,22 @@
 
 .filter{
  display: flex;
- margin: 10px;
+ justify-content: space-between;
+ margin-bottom: 10px;
+}
+
+.search_box{
+    font-size: 16px;
+}
+
+.search-btn{
+    font-size: 16px;
 }
 
 .filter-btn{
     cursor: pointer;
     margin-left: 10px;
+    font-size: 16px;
 }
 
 .resimg{
