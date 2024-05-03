@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import {useState, useEffect} from 'react'
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
 //It gives us an array which we have destructured on the fly another way it can be represented is
@@ -58,7 +59,7 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredRes.map((restaurant) => (
-          <RestaurantCard key={restaurant?.info?.id} resData={restaurant?.info} />
+         <Link key={restaurant?.info?.id} to={"/restaurant/" + restaurant?.info?.id}> <RestaurantCard  resData={restaurant?.info} /> </Link>
         ))}
       </div>
     </div>
