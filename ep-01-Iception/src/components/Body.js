@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import {useState, useEffect} from 'react'
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
 //It gives us an array which we have destructured on the fly another way it can be represented is
@@ -31,6 +32,14 @@ const Body = () => {
   //   return <Shimmer/>
   // }
   //conditional rendering using tertianary operator.
+
+ const onlineStatus = useOnlineStatus()
+
+ if(onlineStatus === false){
+  return <h1>Looks like you are offline!!! Please check your internet connection</h1>
+ }
+
+
   return listRes.length === 0 ? (<Shimmer/>) : (
     <div className="body">
       <div className="filter">

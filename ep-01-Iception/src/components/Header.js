@@ -2,10 +2,13 @@ import React from "react"
 import  {RES_LOGO} from "../utils/constants"
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import useOnlineStatus from "../utils/useOnlineStatus"
+
 const Header = () => {
 
   const [btnName, setBtnName] = useState("LogIn");
 
+  const onlineStatus = useOnlineStatus()
 
     return (
       <div className="header">
@@ -15,6 +18,7 @@ const Header = () => {
   
         <div className="nav-items">
           <ul>
+            <li>Online Status: {onlineStatus? "🟢" : "🔴"} </li>
             {/* {nav items is a list so we are using uoordered list amd list tag} */}
             <li>
               <Link to="/">Home</Link>
