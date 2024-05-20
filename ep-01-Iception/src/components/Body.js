@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, {withOpenLabel} from "./RestaurantCard";
 import {useState, useEffect} from 'react'
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -15,6 +15,10 @@ const Body = () => {
 
   //when ever a state variable is updated, react triggers a reconciliation cycle(re-renders the component)
   
+  console.log("list", listRes)
+
+  const RestaurantCardOpen = withOpenLabel(RestaurantCard);
+
   useEffect(()=> {
     fetchData()
   }, []); 
@@ -42,13 +46,13 @@ const Body = () => {
 
   return listRes.length === 0 ? (<Shimmer/>) : (
     <div className="body">
-      <div className="filter">
-        <div className="search">
-          <input type="text" className="search_box" value={searchText} onChange={(e)=>{
+      <div className="flex justify-between items-center">
+        <div className=" p-4 m-4">
+          <input type="text" placeholder="search for rest..." className="border border-solid border-black" value={searchText} onChange={(e)=>{
             setSearchText(e.target.value);
           }}/>
 
-          <button className="search-btn" onClick={()=> {
+          <button className="mx-4 bg-green-100 px-4 py-2 hover:bg-green-300 rounded-lg" onClick={()=> {
             //filter the res cards and update the ui.
             const filteredRes = listRes.filter((res) => res?.info?.name.toLowerCase().includes(searchText.toLowerCase()));
             setFilteredRes(filteredRes);
@@ -56,7 +60,8 @@ const Body = () => {
 
         </div>
 
-        <button className="filter-btn" onClick={() => {
+        <div className="p-4 m-4 flex items-center">
+        <button className=" px-4 py-2 bg-red-200 hover:bg-red-400 rounded-lg" onClick={() => {
           const filteredList  =
           listRes.filter((res) => 
             res?.info?.avgRating > 4
@@ -65,10 +70,12 @@ const Body = () => {
         }}>
           Top rated Restaurant
         </button>
+        </div>
+        
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap justify-between">
         {filteredRes.map((restaurant) => (
-         <Link key={restaurant?.info?.id} to={"/restaurant/" + restaurant?.info?.id}> <RestaurantCard  resData={restaurant?.info} /> </Link>
+         <Link key={restaurant?.info?.id} to={"/restaurant/" + restaurant?.info?.id}> {restaurant?.info?.isOpen ? <RestaurantCardOpen resData={restaurant?.info}/> : <RestaurantCard  resData={restaurant?.info} />} </Link>
         ))}
       </div>
     </div>
