@@ -48,11 +48,11 @@ const Body = () => {
     <div className="body">
       <div className="flex justify-between items-center">
         <div className=" p-4 m-4">
-          <input type="text" placeholder="search for rest..." className="border border-solid border-black" value={searchText} onChange={(e)=>{
+          <input type="text" placeholder="Search for restaurant." className="border border-solid border-black p-1 rounded-md" value={searchText} onChange={(e)=>{
             setSearchText(e.target.value);
           }}/>
 
-          <button className="mx-4 bg-green-100 px-4 py-2 hover:bg-green-300 rounded-lg" onClick={()=> {
+          <button className="mx-4 bg-green-300 px-4 py-2 hover:bg-green-500 rounded-lg" onClick={()=> {
             //filter the res cards and update the ui.
             const filteredRes = listRes.filter((res) => res?.info?.name.toLowerCase().includes(searchText.toLowerCase()));
             setFilteredRes(filteredRes);

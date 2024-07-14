@@ -1,18 +1,17 @@
 import CategoryItemList from "./CategoryItemList";
-import { useState } from "react";
 
-const ResCategoryAccordion = ({ category }) => {
+const ResCategoryAccordion = ({ category, showCategoryList, setExpandAccordion }) => {
 
-  const [showCategoryList, setShowCategoryList] = useState(false)
 
   const handleClick = () => {
-    setShowCategoryList(!showCategoryList)
+    setExpandAccordion();
   }
-  console.log(category);
+
+  // console.log(category);
   return (
     <div>
       <div className="mx-auto my-6 w-6/12 shadow-lg bg-gray-100 rounded-lg p-4 ">
-        <div className="flex justify-between cursor-pointer" onClick={handleClick}>
+        <div className="flex justify-between cursor-pointer" onClick={handleClick} >
           <span className="font-semibold text-lg">
             {category.title}({category.itemCards.length})
           </span>
@@ -25,4 +24,4 @@ const ResCategoryAccordion = ({ category }) => {
   );
 };
 
-export default ResCategoryAccordion;
+export default ResCategoryAccordion; // This is a controlled component as it being controlled by the restaurantMenu(Parent component) component.

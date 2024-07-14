@@ -2,9 +2,12 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import ResCategoryAccordion from "./ResCategoryAccordion";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
   // const [resInfo, setResInfo] = useState(null)
+
+  const [expandAccordion, setExpandAccordion] = useState(null);
 
   const { resId } = useParams();
 
@@ -52,11 +55,17 @@ const RestaurantMenu = () => {
         🌟{avgRatingString} . {cuisines.join(" , ")} - {costForTwoMessage}
       </p>
       {/* {category accordion} */}
-      {categories.map((category) => (
-        <ResCategoryAccordion  category={category?.card?.card} />
+      {categories.map((category, index) => (
+        <ResCategoryAccordion
+          key={category?.card?.card?.title}
+          showCategoryList={index === expandAccordion ? true : false} /*to control the accordion of res. category so that when one is opened others must be closed automatically.
+          Now this restaurant mnu component is controlling the restaurant category accordion component.*/
+          category={category?.card?.card}
+          setExpandAccordion = {()=> setExpandAccordion(index)} 
+        />
       ))}
     </div>
   );
 };
 
-export default RestaurantMenu;
+export default RestaurantMenu; //this is a parent component to resCategoryAccordion component.

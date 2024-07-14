@@ -1,7 +1,7 @@
 import { RES_CARD_IMG } from "../utils/constants";
 
 const CategoryItemList = ({ itemCards }) => {
-  console.log(itemCards);
+  // console.log(itemCards);
   return (
     <div>
       {itemCards.map((item) => (
