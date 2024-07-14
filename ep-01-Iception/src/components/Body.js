@@ -15,7 +15,7 @@ const Body = () => {
 
   //when ever a state variable is updated, react triggers a reconciliation cycle(re-renders the component)
   
-  console.log("list", listRes)
+  // console.log("list", listRes)
 
   const RestaurantCardOpen = withOpenLabel(RestaurantCard);
 
