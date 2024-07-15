@@ -10,7 +10,7 @@ const Header = () => {
 
   const onlineStatus = useOnlineStatus();
 
-  const dummyData = useContext(UserContext)
+  const {loggedInUser} = useContext(UserContext)
 
   return (
     <div className="flex justify-between bg-pink-100 shadow-lg">
@@ -49,7 +49,7 @@ const Header = () => {
             {btnName}
           </button>
           <li className="px-5">
-              {dummyData.loggedInUser}
+              {loggedInUser}
             </li>
         </ul>
       </div>

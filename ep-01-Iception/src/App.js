@@ -1,57 +1,72 @@
-import React, {lazy, Suspense} from "react"
-import  ReactDOM from "react-dom/client";
+import React, { lazy, Suspense, useEffect, useState } from "react";
+import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
-import {createBrowserRouter , RouterProvider, Outlet} from "react-router-dom"
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Shimmer from "./components/Shimmer";
+import UserContext from "./utils/UserContext";
 // import Grocery from "./components/Grocery";
 
-
-const Grocery = lazy(() => import("./components/Grocery"))
+const Grocery = lazy(() => import("./components/Grocery"));
 
 const AppLayout = () => {
+  const [userName, setUserName] = useState();
+
+  useEffect(() => {
+    const data = {
+      name: "Aman",
+    };
+    setUserName(data.name)
+  }, []);
+
   return (
-    <div className="app"> 
-      <Header/>
-      {/* This outlet is filled with the particular children(from approuter from below) according to the route path */}
-      <Outlet/> 
-    </div>
-  )
-}
+    <UserContext.Provider value={{loggedInUser: userName, setUserName}}  >
+      <div className="app">
+        <Header />
+        {/* This outlet is filled with the particular children(from approuter from below) according to the route path */}
+        <Outlet />
+      </div>
+    </UserContext.Provider>
+  );
+};
 
 const appRouter = createBrowserRouter([
   {
-    path:"/",
-    element: <AppLayout/>,
-    children:[
+    path: "/",
+    element: <AppLayout />,
+    children: [
       {
         path: "/",
-        element: <Body/>,
+        element: <Body />,
       },
       {
         path: "/about",
-        element: <About/>,
+        element: <About />,
       },
       {
-        path:"/contact",
-        element: <Contact/>
+        path: "/contact",
+        element: <Contact />,
       },
       {
-        path:"/grocery",
-        element: <Suspense fallback={<Shimmer/>}><Grocery/></Suspense>
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <Grocery />
+          </Suspense>
+        ),
       },
       {
-        path:"/restaurant/:resId",
-        element: <RestaurantMenu/>
-      }
+        path: "/restaurant/:resId",
+        element: <RestaurantMenu />,
+      },
     ],
-    errorElement: <Error/>
+    errorElement: <Error />,
   },
-])
+]);
 
 // const parent = React.createElement(
 //   "div",{ id: "parent" },
@@ -74,4 +89,4 @@ const appRouter = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root")); // everything that we will render , will be inside the root
 
-root.render(<RouterProvider router={appRouter}/>);
+root.render(<RouterProvider router={appRouter} />);

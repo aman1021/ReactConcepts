@@ -1,8 +1,9 @@
 import RestaurantCard, {withOpenLabel} from "./RestaurantCard";
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
 //It gives us an array which we have destructured on the fly another way it can be represented is
@@ -43,6 +44,8 @@ const Body = () => {
   return <h1>Looks like you are offline!!! Please check your internet connection</h1>
  }
 
+ const {loggedInUser ,setUserName} = useContext(UserContext)
+
 
   return listRes.length === 0 ? (<Shimmer/>) : (
     <div className="body">
@@ -70,6 +73,11 @@ const Body = () => {
         }}>
           Top rated Restaurant
         </button>
+        </div>
+
+        <div >
+          <label>User name:</label>
+          <input value={loggedInUser} onChange={(e)=> setUserName(e.target.value)} className="p-2 border border-black"/>
         </div>
         
       </div>
