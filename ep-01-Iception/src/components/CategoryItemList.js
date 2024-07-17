@@ -1,6 +1,16 @@
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 import { RES_CARD_IMG } from "../utils/constants";
 
 const CategoryItemList = ({ itemCards }) => {
+
+  const dispatch = useDispatch()
+
+  const addItemsToCart = (item) => {
+    //dispatch an action
+    dispatch(addItem(item))
+  }
+
   // console.log(itemCards);
   return (
     <div>
@@ -29,7 +39,7 @@ const CategoryItemList = ({ itemCards }) => {
                 className="w-20 h-20 rounded-xl shadow-xl"
               />
               <div className="absolute -bottom-5" >
-                <button className="bg-white shadow-lg text-green-600 hover:bg-green-600 hover:text-white border-gray-300 border-b-2 rounded-lg font-semibold w-16 p-1">
+                <button onClick={()=>addItemsToCart(item)} className="bg-white shadow-lg text-green-600 hover:bg-green-600 hover:text-white border-gray-300 border-b-2 rounded-lg font-semibold w-16 p-1">
                   Add +
                 </button>
               </div>
