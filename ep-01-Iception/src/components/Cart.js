@@ -1,24 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
 import CategoryItemList from "./CategoryItemList";
-import { clearcart, addItem, setCartItems } from "../utils/cartSlice";
+import { clearcart } from "../utils/cartSlice";
 import React, { useEffect } from "react";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((store) => store.cart.items);
-
-  localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
-  useEffect(() => {
-    const savedCartItems = localStorage.getItem("cartItems");
-    if (savedCartItems) {
-      dispatch(setCartItems(JSON.parse(savedCartItems)));
-    }
-  }, [dispatch]);
+   
 
   const handleClearCart = () => {
     dispatch(clearcart());
-    localStorage.setItem("cartItems", JSON.stringify([]));
+    
   };
 
   console.log(cartItems);

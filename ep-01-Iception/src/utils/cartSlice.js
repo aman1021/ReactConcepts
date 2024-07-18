@@ -16,10 +16,10 @@ const cartSlice = createSlice({
             state.items.pop()
         },
         clearcart: (state) => {
-            state.items.length = 0;
-        },
-        setCartItems(state, action) {
-            state.items = action.payload;
+
+            //console.log(current(state)); to print the state variable and see its value as we can not directly print it using console.log(state);
+            // state.items.length = 0;
+            return {items : []}
         },
     }
 })
